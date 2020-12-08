@@ -1,21 +1,23 @@
 <template>
   <base-card v-if="!show">
-    <div class="quote-container" id="quote-container">
-      <!-- Quote -->
-      <div class="quote-text">
-        <i class="fas fa-quote-left"></i>
-        <span id="quote" :class="addLongQuoteClass">{{ quote }}</span>
+    <transition name="fade">
+      <div class="quote-container" id="quote-container">
+        <!-- Quote -->
+        <div class="quote-text">
+          <i class="fas fa-quote-left"></i>
+          <span id="quote" :class="addLongQuoteClass">{{ quote }}</span>
+        </div>
+        <!-- Author -->
+        <div class="quote-author">
+          <span id="author">{{ quoteAuthor }}</span>
+        </div>
+        <!-- Buttons -->
+        <button-container
+          @twitter-btn="tweetQuote"
+          @new-quote-btn="getQuote"
+        ></button-container>
       </div>
-      <!-- Author -->
-      <div class="quote-author">
-        <span id="author">{{ quoteAuthor }}</span>
-      </div>
-      <!-- Buttons -->
-      <button-container
-        @twitter-btn="tweetQuote"
-        @new-quote-btn="getQuote"
-      ></button-container>
-    </div>
+    </transition>
   </base-card>
   <teleport to="body" v-else>
     <base-card>
@@ -61,10 +63,8 @@ export default {
           let number = Math.floor(Math.random() * data.length);
           const randomQuoteAuthor = data[number].author;
           const randomQuoteText = data[number].text;
-
           this.quote = randomQuoteText;
           this.checkQuoteLength();
-
           if (!randomQuoteAuthor) {
             this.quoteAuthor = "Unknown";
           } else {
