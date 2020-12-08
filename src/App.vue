@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <the-header title="Quote Generator"></the-header>
-    <quote-generator></quote-generator>
-  </div>
+  <transition name="fade" appear>
+    <div>
+      <the-header title="Quote Generator"></the-header>
+      <quote-generator></quote-generator>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -39,23 +41,13 @@ body {
   opacity: 0;
 }
 .fade-enter-active {
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.5s ease-out;
 }
 .fade-enter-to,
 .fade-leave-from {
   opacity: 1;
 }
 .fade-leave-active {
-  transition: opacity 0.3s ease-in;
-}
-
-/* Media Querry for Tablet or smaller */
-@media screen and (max-width: 1000px) {
-  .quote-container {
-    margin: auto 10px;
-  }
-  .quote-text {
-    font-size: 2.5rem;
-  }
+  transition: opacity 0.5s ease-in;
 }
 </style>

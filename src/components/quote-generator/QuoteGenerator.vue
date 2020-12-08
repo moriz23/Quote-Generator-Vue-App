@@ -1,6 +1,6 @@
 <template>
   <base-card v-if="!show">
-    <transition name="fade">
+    <transition name="fade" appear>
       <div class="quote-container" id="quote-container">
         <!-- Quote -->
         <div class="quote-text">
@@ -71,10 +71,10 @@ export default {
             this.quoteAuthor = randomQuoteAuthor;
           }
           this.show = false;
-        })
-        .catch((error) => {
-          error = "Falied to fetch data - please try again later";
         });
+      // .catch((error) => {
+      //   error = "Falied to fetch data - please try again later";
+      // });
     },
     tweetQuote() {
       const quote = this.quote;
@@ -123,5 +123,28 @@ export default {
   font-size: 2rem;
   font-weight: 400;
   font-style: italic;
+}
+
+/* Media Querry for Tablet or smaller */
+@media screen and (max-width: 1000px) {
+  .quote-container {
+    margin: auto 10px;
+  }
+  .quote-text {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .fa-quote-left {
+    font-size: 2rem;
+  }
+  .quote-text,
+  .long-quote {
+    font-size: 1.5rem;
+  }
+  .quote-author {
+    font-size: 1rem;
+  }
 }
 </style>
