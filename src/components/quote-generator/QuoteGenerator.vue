@@ -73,7 +73,7 @@ export default {
           this.show = false;
         })
         .catch((error) => {
-          this.error = "Falied to fetch data - please try again later";
+          error = "Falied to fetch data - please try again later";
         });
     },
     tweetQuote() {
