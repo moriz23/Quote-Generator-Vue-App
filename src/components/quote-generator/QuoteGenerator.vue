@@ -73,7 +73,6 @@ export default {
           this.show = false;
         })
         .catch((error) => {
-          console.log(error);
           this.error = "Falied to fetch data - please try again later";
         });
     },
@@ -89,7 +88,6 @@ export default {
       } else {
         this.longQuote = false;
       }
-      console.log(this.quote.length);
     },
   },
   mounted() {
